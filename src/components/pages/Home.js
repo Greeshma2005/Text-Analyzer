@@ -81,27 +81,26 @@ export default function Home(props) {
   }
 
   function handleSentenceCase() {
-  const paragraphs = text.split(/\n+/); 
+    const paragraphs = text.split(/\n+/);
 
-  const sentenceCasedParagraphs = paragraphs.map(paragraph => {
-    const parts = paragraph
-      .trim()
-      .toLowerCase()
-      .split(/([.?!]\s*)/g); 
-    for (let i = 0; i < parts.length; i += 2) {
-      if (parts[i]) {
-        parts[i] = parts[i].charAt(0).toUpperCase() + parts[i].slice(1);
+    const sentenceCasedParagraphs = paragraphs.map(paragraph => {
+      const parts = paragraph
+        .trim()
+        .toLowerCase()
+        .split(/([.?!]\s*)/g);
+      for (let i = 0; i < parts.length; i += 2) {
+        if (parts[i]) {
+          parts[i] = parts[i].charAt(0).toUpperCase() + parts[i].slice(1);
+        }
       }
-    }
 
-    return parts.join("").trim(); 
-  });
+      return parts.join("").trim();
+    });
 
-  const result = sentenceCasedParagraphs.join("\n"); 
-  setText(result);
-  props.showAlert("Converted to sentence case.", "Success!");
-}
-
+    const result = sentenceCasedParagraphs.join("\n");
+    setText(result);
+    props.showAlert("Converted to sentence case.", "Success!");
+  }
 
   function handleReverse() {
     let newText = text.split("").reverse().join("");
@@ -176,38 +175,37 @@ export default function Home(props) {
               value={text}
               onChange={handleOnChange}
               id="content"
-              rows=""
-              className="px-0 w-full h-44 md:h-64 text-sm md:text-base text-white dark:text-gray-700 bg-[#0B1120] dark:bg-white focus:ring-0 border-none placeholder:text-white dark:placeholder:text-gray-400"
+              rows="10"
+              className="w-full resize-none text-sm md:text-base text-white dark:text-gray-700 bg-[#0B1120] dark:bg-white focus:ring-0 border-none placeholder:text-white dark:placeholder:text-gray-400 p-3 rounded-md"
               placeholder="Write your content..."
               autoFocus={true}
-            ></textarea>
+            />
           </div>
 
           <div className="flex flex-wrap justify-between items-center gap-y-3 lg:gap-y-0 p-3 md:py-4 border-t border-[#1a2233] dark:border-[#e5e7eb]">
-            <div className="inline-flex rounded-md shadow-sm" role="group">
+            <div className="flex flex-wrap gap-2">
               <button disabled={!text} onClick={handleTitleCase} type="button"
-                className="py-1 px-2 text-xs md:py-2 md:px-4 md:text-sm font-medium text-blue-500 bg-transparent rounded-l-lg border border-blue-500 hover:bg-blue-500 hover:text-white">
+                className="py-1 px-2 text-xs md:py-2 md:px-4 md:text-sm font-medium text-blue-500 bg-transparent border border-blue-500 rounded hover:bg-blue-500 hover:text-white">
                 Title Case
               </button>
               <button disabled={!text} onClick={handleUppercase} type="button"
-                className="py-1 px-2 text-xs md:py-2 md:px-4 md:text-sm font-medium text-blue-500 bg-transparent border-t border-b border-blue-500 hover:bg-blue-500 hover:text-white">
+                className="py-1 px-2 text-xs md:py-2 md:px-4 md:text-sm font-medium text-blue-500 bg-transparent border border-blue-500 rounded hover:bg-blue-500 hover:text-white">
                 UPPERCASE
               </button>
               <button disabled={!text} onClick={handleLowercase} type="button"
-                className="py-1 px-2 text-xs md:py-2 md:px-4 md:text-sm font-medium text-blue-500 bg-transparent border-t border-b border-l border-blue-500 hover:bg-blue-500 hover:text-white">
+                className="py-1 px-2 text-xs md:py-2 md:px-4 md:text-sm font-medium text-blue-500 bg-transparent border border-blue-500 rounded hover:bg-blue-500 hover:text-white">
                 lowercase
               </button>
               <button disabled={!text} onClick={handleSentenceCase} type="button"
-                className="py-1 px-2 text-xs md:py-2 md:px-4 md:text-sm font-medium text-blue-500 bg-transparent border-t border-b border-l border-blue-500 hover:bg-blue-500 hover:text-white">
+                className="py-1 px-2 text-xs md:py-2 md:px-4 md:text-sm font-medium text-blue-500 bg-transparent border border-blue-500 rounded hover:bg-blue-500 hover:text-white">
                 Sentence Case
               </button>
               <button disabled={!text} onClick={RemoveExtraSpace} type="button"
-                className="py-1 px-2 text-xs md:py-2 md:px-4 md:text-sm font-medium text-blue-500 bg-transparent border-t border-b border-l border-blue-500 hover:bg-blue-500 hover:text-white">
-                RemoveExtraSpace
+                className="py-1 px-2 text-xs md:py-2 md:px-4 md:text-sm font-medium text-blue-500 bg-transparent border border-blue-500 rounded hover:bg-blue-500 hover:text-white">
+                Remove Spaces
               </button>
-
               <button disabled={!text} onClick={handleReverse} type="button"
-                className="py-1 px-2 text-xs md:py-2 md:px-4 md:text-sm font-medium text-blue-500 bg-transparent rounded-r-md border border-blue-500 hover:bg-blue-500 hover:text-white">
+                className="py-1 px-2 text-xs md:py-2 md:px-4 md:text-sm font-medium text-blue-500 bg-transparent border border-blue-500 rounded hover:bg-blue-500 hover:text-white">
                 Reverse
               </button>
             </div>

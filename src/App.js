@@ -11,7 +11,7 @@ import About from "./components/pages/About";
 
 function App() {
   const [alert, setAlert] = useState(null);
-  const [darkMode, setDarkMode] = useState(true); // default theme
+  const [darkMode, setDarkMode] = useState(true); 
 
   const showAlert = (message, type) => {
     setAlert({ msg: message, type });

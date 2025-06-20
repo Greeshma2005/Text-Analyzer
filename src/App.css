@@ -2,9 +2,11 @@
   text-align: center;
 }
 
-html {
-  transition: background-color 0.3s ease, color 0.3s ease;
+html,
+body {
+  background-color: #0B1120;
 }
+
 
 .App-logo {
   height: 40vmin;
